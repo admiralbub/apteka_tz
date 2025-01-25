@@ -45,6 +45,28 @@ $(document).ready(function () {
         });
     });
 
+    $('#addProducBasketOne').on('click', function () {
+        const productId = $(this).data('id');
+        const quantity = $('#quantityShow').val();   
+
+        $.ajax({
+            url: '/basket/add', 
+            method: 'POST',  
+            data: {
+                productId: productId,
+                quantity: quantity,
+                _token: $('meta[name="csrf-token"]').attr('content') 
+            },
+            success: function (response) {
+                alert(response.message);
+                location.reload();
+            },
+            error: function (xhr, status, error) {
+                console.error(xhr.responseText);
+                alert('Произошла ошибка при добавлении товара.');
+            }
+        });
+    })
     $('.change-quantity').on('change', function () {
         const id = $(this).data('id');
         $.ajax({

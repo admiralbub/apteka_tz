@@ -19,4 +19,7 @@ class ProductService implements ProductServiceInterface
     {
         return $this->product->paginate(3);
     }
+    public function showProduct(int $id) {
+        return $this->product->findorfail($id);
+    }
 }

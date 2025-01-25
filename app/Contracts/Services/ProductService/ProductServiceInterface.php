@@ -12,5 +12,6 @@ interface ProductServiceInterface
 {
 
     public function showProductsInIndex();
+    public function showProduct(int $id);
 
 }
